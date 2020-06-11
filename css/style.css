@@ -1,0 +1,139 @@
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+input[type=number] {
+    -moz-appearance:textfield;
+}
+
+#heroMessage {
+	opacity: 1;
+	transition: all 250ms ease-out;
+}
+
+.studentForm {
+	margin: auto;
+	transition: all 250ms ease-out;
+	display: flow-root;
+}
+
+.heroHidden{
+	opacity: 0!important;
+}
+.displayNone{
+	display: none;
+}
+
+@media only screen and (min-width: 1200px) {
+	#heroMessage {
+		width: 700px;
+		margin: 17vh auto 3vh auto;
+	}
+	.studentForm {
+		width: 700px;
+	}
+	.formSpacer {
+		margin-top: 260px!important;
+	}
+}
+
+@media only screen and (max-width: 600px) {
+	#heroMessage {
+		width: auto;
+	}
+	.studentForm {
+		width:auto;
+		margin-top: auto;
+	}
+	.formSpacer {
+		margin-top: auto!important;
+	}
+}
+
+
+
+.submit-form {
+	float: right!important;
+	margin-left: 25px;
+}
+
+.voteOption{
+	transition: all 250ms ease;
+	cursor: pointer!important;
+	background-color: #f5f5f5!important;
+	border: 1px #f5f5f5 solid!important;
+	box-shadow: none!important;
+}
+
+.voteSelected{
+	background-color: white!important;
+	border: 1px #dbdbdb solid!important;
+	color: #3273dc!important;
+	box-shadow: 0 0.0625em 0.125em rgba(10, 10, 10, .05)!important;
+}
+
+
+.voteOption:hover{
+	border: 1px #b5b5b5 solid!important;
+}
+
+.voteOption:not(.voteSelected):hover + span{
+	color: black!important;
+	transition: all 500ms ease;
+}
+
+.voteOption:not(.voteSelected) + span {
+	color: #dbdbdb!important;
+}
+.voteSelected + span {
+	color: #3273dc!important;
+}
+
+.voteCheckbox:disabled {
+	border: 1px #f5f5f5 solid!important;
+	color: #dbdbdb!important;
+}
+
+.voteCheckbox:disabled:hover {
+	cursor: default!important;
+}
+
+.voteCheckbox:disabled:hover + span {
+	color: #dbdbdb!important;
+}
+
+.confirmBox {
+	padding: 15px!important;
+	height: fit-content;
+}
+
+#slide1 {
+	overflow: hidden;
+}
+
+@keyframes transition-text-out {
+	0% {margin-left: 0px;}
+	100% {margin-left: -580px;}
+}
+
+@keyframes transition-text-in {
+	0% {margin-left: 700px; margin-right: -700px;}
+	100% {margin-left: 0px; margin-right: -700px;}
+}
+
+.transitionTextIn {
+	animation: transition-text-in 250ms ease forwards;
+}
+
+.transitionTextOut {
+	animation: transition-text-out 350ms cubic-bezier(0.6, -0.28, 0.735, 0.045) forwards;
+}
+
+#voteFake {
+	display: none;
+}
+
+#voteFake + span {
+	display: none;
+}

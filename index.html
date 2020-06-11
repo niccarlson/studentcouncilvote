@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>EGRHS Student Council Voting</title>
+		<link href="css/style.css" rel="stylesheet">
+		<link href="css/bulma.css" rel="stylesheet">
+		<script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+		<script defer src="js/daemon.js"></script>
+	</head>
+	<body>
+		<section class="section">
+			<div class="container" style="height: 100%;">
+				<article class="message is-link" id="heroMessage">
+					<div class="message-header">
+						<p>Welcome! 🗳️</p>
+					</div>
+					<div class="message-body">This site was created to remotely place your vote for EGRHS Student Council positions! You can place one vote each for the <strong>president, vice president, treasurer, and secretary</strong>. Additionally, you can place six votes for the six <strong>representative</strong> positions. You will be asked to enter some information to verify your identity before placing your vote. Please have your student number ready. If you don't know your student number, it is listed below your name on your ID card. If you run into any problems, please contact us via chat <a href="#">here!</a></div>
+				</article>
+				<div class="container" style="display: flex">
+
+					<div class="box studentForm" id="slide1">
+
+						<p class="subtitle" id="loginHeaderLabel">To begin, read the message above and enter your info below.</p>
+							<div class="columns">
+								<div class="column">
+									<label class="label">Last Name</label>
+									<div class="field">
+										<p class="control has-icons-left">
+											<input type=text id="lastName" class="input" placeholder="Smith">
+											<span class="icon is-small is-left"><i class="fas fa-user"></i></span>
+										</p>
+									</div>
+								</div>
+								<div class="column">
+									<label class="label">Student ID Number</label>
+									<div class="field" style="display: inline-flex;">
+										<p class="control has-icons-left has-icons-right">
+											<input class="input" id="studentNumber" type=number placeholder="123456" maxlength=6>
+											<span class="icon is-left"><i class="fas fa-lock"></i></span>
+											<span class="icon is-small is-right is-hidden" id="e_iconStudentId"><i class="fas fa-exclamation-triangle"></i></span>
+											<span class="help is-danger is-hidden" id="e_labelStudentId">Please enter a student ID number.</span>
+										</p>
+										
+
+
+										<button class="button is-link submit-form" id="submitInfo" onclick="showSlide(2)">
+										<span>Next</span>
+										<span class="icon is-small">
+										<i class="fas fa-angle-right"></i>
+										</span>
+										</button>
+									</div>
+								</div>
+							</div>
+						
+					</div>
+				
+					<div class="box studentForm" id="slide2">
+						<p class="subtitle">Ok, {name}! Please select your vote for <strong>president, vice president, treasurer, and secretary</strong>!</p>
+						
+							<div class="columns">
+								<div class="column" id="presidentColumn">
+									<label class="label">President</label>
+									<div class="field" id="cloneNodeRadio">
+										<p class="control has-icons-right">
+											<input type=button id="voteFake" class="input voteOption">
+											<span class="icon is-small is-right"><i class="far fa-circle"></i></span>
+										</p>
+									</div>
+								</div>
+								<div class="column" id="vicePresidentColumn">
+									<label class="label">Vice President</label>
+								
+								</div>
+							</div>
+							<div class="columns">
+								<div class="column" id="treasurerColumn">
+									<label class="label">Treasurer</label>
+								
+								</div>
+								<div class="column" id="secretaryColumn">
+									<label class="label">Secretary</label>
+									
+								</div>
+							</div>
+							<button class="button is-link is-light"  onclick="showSlide(1)">
+							<span class="icon is-small">
+							<i class="fas fa-angle-left"></i>
+							</span>
+							<span>Back</span>
+							</button>
+							<button class="button is-link submit-form" onclick="showSlide(3)">
+							<span>Next</span>
+							<span class="icon is-small">
+							<i class="fas fa-angle-right"></i>
+							</span>
+							</button>
+						
+					</div>
+					<div class="box studentForm" id="slide3">
+						<p class="subtitle">Awesome! Now select your votes for <strong>representatives.</strong></p>
+						
+							<div class="columns">
+								<div class="column" id="representativeColumnLeft">
+									<label class="label">Representatives <span class="subtitle is-size-6">(select up to 6)</span></label>
+									<div class="field" id="cloneNodeCheckbox">
+										<p class="control has-icons-right">
+											<input type=button id="voteFake" class="input voteOption voteCheckbox">
+											<span class="icon is-small is-right"><i class="far fa-square"></i></span>
+										</p>
+									</div>
+								
+								</div>
+								<div class="column" id="representativeColumnRight">
+									<label class="label" style="opacity: 0;">.</label>
+							
+								</div>
+							</div>
+							<button class="button is-link is-light"  onclick="showSlide(2)">
+							<span class="icon is-small">
+							<i class="fas fa-angle-left"></i>
+							</span>
+							<span>Back</span>
+							</button>
+							<button class="button is-link submit-form" onclick="showSlide(4)">
+							<span>Next</span>
+							<span class="icon is-small">
+							<i class="fas fa-angle-right"></i>
+							</span>
+							</button>
+						
+					</div>
+					<div class="box studentForm" id="slide4">
+						<p class="subtitle">Ok! You're almost done. Confirm your votes below and submit.</p>
+						
+							<div class="columns">
+								<div class="column">
+									<div class="box confirmBox">
+										<p class="field-body">President</p>
+										<label class="label has-text-link" id="presidentConfirmLabel">No vote</label>
+									</div>
+									<div class="box confirmBox">
+										<p class="field-body">Treasurer</p>
+										<label class="label has-text-link" id="treasurerConfirmLabel">No vote</label>
+									</div>
+								</div>
+								<div class="column">
+									<div class="box confirmBox">
+										<p class="field-body">Vice President</p>
+										<label class="label has-text-link" id="viceConfirmLabel">No vote</label>
+									</div>
+									<div class="box confirmBox">
+										<p class="field-body">Secretary</p>
+										<label class="label has-text-link" id="secretaryConfirmLabel">No vote</label>
+									</div>
+								</div>
+							</div>
+							<div class="box confirmBox">
+								<p class="field-body">Representatives</p>
+								<div class="columns">
+									<div class="column">
+										<label class="label has-text-link" id="repConfirmLabel0">No vote</label>
+										<label class="label has-text-link" id="repConfirmLabel1">No vote</label>
+										<label class="label has-text-link" id="repConfirmLabel2">No vote</label>
+									</div>
+									<div class="column">
+										<label class="label has-text-link" id="repConfirmLabel3">No vote</label>
+										<label class="label has-text-link" id="repConfirmLabel4">No vote</label>
+										<label class="label has-text-link" id="repConfirmLabel5">No vote</label>
+									</div>
+								</div>
+							</div>
+							<button class="button is-link is-light"  onclick="showSlide(3)">
+							<span class="icon is-small">
+							<i class="fas fa-angle-left"></i>
+							</span>
+							<span>Back</span>
+							</button>
+							<button class="button is-link submit-form" onclick="showSlide(5)">
+							<span>Next</span>
+							<span class="icon is-small">
+							<i class="fas fa-angle-right"></i>
+							</span>
+							</button>
+						
+					</div>
+
+
+					<div class="box studentForm" id="slide5">
+						<p class="subtitle"><strong>Congratulations! 🎉</strong> Your votes have been submitted. You're all done now!</p>
+							<div class="columns">
+								
+						
+							</div>
+						
+					</div>
+
+
+
+
+				</div>
+			</div>
+			</div>
+		</section>
+		<script src="https://www.gstatic.com/firebasejs/7.14.5/firebase-app.js"></script>
+		<script src="https://www.gstatic.com/firebasejs/7.14.5/firebase-auth.js"></script>
+		<script src="https://www.gstatic.com/firebasejs/7.14.5/firebase-firestore.js"></script>
+
+		<script>
+			// Your web app's Firebase configuration
+			var firebaseConfig = {
+			  apiKey: "AIzaSyDGNzDL4Hn_pLnZkpdEF2OHFFCmoSli56Y",
+			  authDomain: "egrhs-sc-voting.firebaseapp.com",
+			  databaseURL: "https://egrhs-sc-voting.firebaseio.com",
+			  projectId: "egrhs-sc-voting",
+			  storageBucket: "egrhs-sc-voting.appspot.com",
+			  messagingSenderId: "847604702674",
+			  appId: "1:847604702674:web:56c0b647dc56b5f7183c0b"
+			};
+			// Initialize Firebase
+			firebase.initializeApp(firebaseConfig);
+			var db = firebase.firestore();
+		  </script>
+	</body>
+</html>

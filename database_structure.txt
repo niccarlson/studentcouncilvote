@@ -1,0 +1,15 @@
+|- egrhs-sc-voting
+	|- candidate-lookup-table
+		|- {documentId}
+		 |[name: $string{Candidate name}]
+		 |[position: $string{Running position}]
+	|- user-lookup-table
+		|- {documentId}
+		 |[lastName: $string{User last name}]
+		 |[studentId: $int{Student ID number}]
+		 |[voted: $bool{Has placed vote status}]
+	|- voting-table
+		|- {documentId}
+		 |[presidentVoteId: $string{documentId of candidate voted for president}]
+		 |[representativesVoteIdArray: $array{documentId of candidates voted for representatives}]
+		 |[secretaryVoteId: $string{documentId of 
